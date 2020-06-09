@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.0.1">
-    <title>david hu</title>
+    <title>{{ blog.title }}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
 
@@ -40,6 +40,13 @@
           font-size: 3.5rem;
         }
       }
+
+
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
     </style>
   </head>
   <body>
@@ -53,44 +60,21 @@
 						<div class="navbar-nav ml-auto">
 							<a class="nav-item nav-link" href="https://twitter.com/kwongliik">Twitter</a>
 							<a class="nav-item nav-link" href="{% static 'DavidResume.pdf' %}">Resume</a>
-							<a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+							<a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
 						</div>
 				</div>
 			</nav>
     </header>
 
 <main role="main">
-
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1>Hi! I'm David.</h1>
-      <p class="lead text-muted">Hey, my name is David Hu and i love to make Django websites. It's the thrill of handling the requests that the people want.</p>
-      <p>
-        <a href="mailto:kwongliik@yahoo.com" class="btn btn-primary my-2">Email Me</a>
-      </p>
-      <img src="{% static 'self.jpg' %}" height="100" style="transform:rotate(90deg);">
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-
-        {% for job in jobs.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ job.image.url }}">
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
+  <div class="container">
+    <h1 class="text-center pt-3">{{ blog.title }}</h1>
+    <p class="text-center">{{ blog.pub_date }}</p>
+    <img class="img-fluid" src="{{ blog.image.url }}">
+    <br>
+    <br>
+    <p>{{ blog.body }}</p>
   </div>
-
 </main>
 
 <footer class="text-muted">
